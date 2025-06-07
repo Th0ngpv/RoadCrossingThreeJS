@@ -1,29 +1,29 @@
-import * as THREE from 'three';
-import { Renderer } from './components/Renderer';
-import { Camera } from './components/Camera';
-import { player } from './components/Player';
+import * as THREE from "three";
+import { Renderer } from "./components/Renderer";
+import { Camera } from "./components/Camera";
+import { DirectionalLight } from "./components/DirectionalLight";
+import { player } from "./components/Player";
+import { map, initializeMap } from "./components/Map";
 import "./style.css";
 
-// Initialize the scene
 const scene = new THREE.Scene();
 scene.add(player);
+scene.add(map);
 
-
-// ambient light
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); 
+const ambientLight = new THREE.AmbientLight();
 scene.add(ambientLight);
 
-// Directional light
-const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5); 
-// Set the position of the light
-directionalLight.position.set(-100,-100,200).normalize(); 
-scene.add(directionalLight);
+const dirLight = DirectionalLight();
+scene.add(dirLight);
 
-
-// Initialize the camera
-const camera = new Camera();
+const camera = Camera();
 scene.add(camera);
 
-// Initialize the renderer
+initializeGame();
+
+function initializeGame() {
+  initializeMap();
+}
+
 const renderer = Renderer();
 renderer.render(scene, camera);
