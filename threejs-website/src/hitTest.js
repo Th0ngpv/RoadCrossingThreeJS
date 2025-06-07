@@ -23,6 +23,14 @@ export function hitTest() {
         if (!resultDOM || !finalScoreDOM) return;
         resultDOM.style.visibility = "visible";
         finalScoreDOM.innerText = position.currentRow.toString();
+
+        // stop the game loop
+        const renderer = THREE.WebGLRenderer.prototype.setAnimationLoop;
+        if (renderer) {
+          renderer(null);
+        } else {
+          throw new Error("Renderer animation loop is not set");
+        }
       }
     });
   }
