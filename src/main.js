@@ -7,6 +7,7 @@ import { map, initializeMap } from "./components/Map";
 import { animateVehicles } from "./animateVehicles.js";
 import { animatePlayer } from "./animatePlayer.js";
 import { hitTest } from "./hitTest.js";
+import { enableControls } from "./collectUserInput";
 import "./style.css";
 import "./collectUserInput";
 
@@ -34,6 +35,7 @@ document
   ?.addEventListener("click", initializeGame);
 
 function initializeGame() {
+  enableControls();
   initializePlayer();
   initializeMap();
 

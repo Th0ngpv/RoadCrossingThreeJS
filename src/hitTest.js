@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import { metadata as rows } from "./components/Map";
 import { player, position } from "./components/Player";
+import { disableControls } from "./collectUserInput";
 
 const resultDOM = document.getElementById("result-container");
 const finalScoreDOM = document.getElementById("final-score");
@@ -24,13 +25,8 @@ export function hitTest() {
         resultDOM.style.visibility = "visible";
         finalScoreDOM.innerText = position.currentRow.toString();
 
-        // stop the game loop
-        const renderer = THREE.WebGLRenderer.prototype.setAnimationLoop;
-        if (renderer) {
-          renderer(null);
-        } else {
-          throw new Error("Renderer animation loop is not set");
-        }
+        // disable player controls
+        disableControls();
       }
     });
   }
