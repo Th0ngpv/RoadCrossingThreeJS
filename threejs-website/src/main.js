@@ -4,7 +4,7 @@ import { Camera } from "./components/Camera";
 import { DirectionalLight } from "./components/DirectionalLight";
 import { player } from "./components/Player";
 import { map, initializeMap } from "./components/Map";
-import { animateVehicles } from "./animateVehicles";
+import { animateVehicles } from "./animateVehicles.js";
 import "./style.css";
 
 const scene = new THREE.Scene();
