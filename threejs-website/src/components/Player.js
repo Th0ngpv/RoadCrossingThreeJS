@@ -81,4 +81,8 @@ export function stepCompleted() {
 
   // add new ros if the player is moving forward
   if (position.currentRow > rows.length - 10) addRows();
+
+  // update the score
+  const scoreDOM = document.querySelector("#score");
+  if (scoreDOM) scoreDOM.innerText = position.currentRow.toString();
 }
